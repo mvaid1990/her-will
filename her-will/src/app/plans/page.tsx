@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import PaymentButton from '@/components/PaymentButton';
 
 interface Plan {
   id: number;
@@ -125,18 +126,17 @@ export default function PlansPage() {
                       ))}
                     </ul>
                     
-                    <Link href="/signup" className="btn w-100 py-3" style={{
-                      background: index === 0 ? 'linear-gradient(135deg, #FF6B9D 0%, #FF1744 100%)' : 'transparent',
-                      border: index === 0 ? 'none' : '2px solid #FF6B9D',
-                      color: index === 0 ? 'white' : '#FF6B9D',
-                      borderRadius: '50px',
-                      fontWeight: '700',
-                      fontSize: '1.05rem',
-                      transition: 'all 0.3s ease',
-                      boxShadow: index === 0 ? '0 4px 15px rgba(255, 107, 157, 0.4)' : 'none'
-                    }}>
-                      {index === 0 ? '🚀 Get Started Now' : 'Choose Plan'}
-                    </Link>
+                    <div style={{width: '100%'}}>
+                      <PaymentButton
+                        planId={plan.id}
+                        planName={plan.name}
+                        amount={plan.price}
+                        userId={undefined} // TODO: Get from auth context
+                        className={`btn w-100 py-3 ${index === 0 ? 'btn-primary' : 'btn-outline-primary'}`}
+                      >
+                        {index === 0 ? '🚀 Pay ₹' + plan.price + ' Now' : '💳 Pay ₹' + plan.price}
+                      </PaymentButton>
+                    </div>
                   </div>
                 </div>
               </div>

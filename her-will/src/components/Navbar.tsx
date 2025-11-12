@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
+import UserMenu from './UserMenu';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -136,17 +137,7 @@ export default function Navbar() {
               </Link>
             </li>
             <li className="nav-item ms-lg-3 mt-3 mt-lg-0">
-              <Link href="/signup" className="btn btn-primary px-4 py-2 position-relative overflow-hidden" style={{
-                borderRadius: '50px',
-                fontWeight: '600',
-                fontSize: '0.95rem',
-                border: 'none',
-                background: 'linear-gradient(135deg, #FF6B9D 0%, #FF1744 100%)',
-                boxShadow: '0 4px 15px rgba(255, 107, 157, 0.4)',
-                transition: 'all 0.3s ease'
-              }}>
-                <span style={{position: 'relative', zIndex: 1}}>🚀 Join Now - ₹99</span>
-              </Link>
+              <UserMenu />
             </li>
           </ul>
         </div>

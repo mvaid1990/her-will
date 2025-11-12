@@ -34,8 +34,12 @@ CREATE TABLE IF NOT EXISTS subscriptions (
     plan_id INTEGER REFERENCES plans(id) ON DELETE CASCADE,
     start_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     end_date TIMESTAMP,
-    status VARCHAR(50) DEFAULT 'active',
-    payment_status VARCHAR(50) DEFAULT 'pending',
+    status VARCHAR(20) DEFAULT 'active' CHECK (status IN ('active', 'expired', 'cancelled')),
+    payment_status VARCHAR(20) DEFAULT 'pending' CHECK (payment_status IN ('pending', 'paid', 'failed')),
+    payment_id VARCHAR(255), 
+    order_id VARCHAR(255), 
+    amount DECIMAL(10, 2), 
+    payment_method VARCHAR(50), 
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
