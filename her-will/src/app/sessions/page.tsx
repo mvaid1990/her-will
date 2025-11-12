@@ -56,31 +56,52 @@ export default function SessionsPage() {
   }
 
   return (
-    <div className="py-5">
-      <div className="container">
-        <div className="text-center mb-5">
-          <h1 className="display-4 fw-bold">Live Sessions</h1>
-          <p className="lead">Join our expert-led fitness sessions</p>
-        </div>
-
-        {sessions.length === 0 ? (
-          <div className="alert alert-info text-center">
-            <h5>No upcoming sessions scheduled</h5>
-            <p className="mb-0">Check back soon for new sessions!</p>
+    <>
+      {/* Page Header */}
+      <section className="hero-section" style={{minHeight: '40vh', padding: '80px 0'}}>
+        <div className="container text-center">
+          <div className="animate-fadeInDown">
+            <span className="badge-custom mb-3">🎥 Live & On-Demand</span>
           </div>
-        ) : (
-          <div className="row g-4">
-            {sessions.map((session) => (
-              <div key={session.id} className="col-md-6 col-lg-4">
-                <div className="card h-100 shadow-sm">
-                  <div className="card-body">
-                    {session.is_live && (
-                      <span className="badge bg-danger mb-2">
-                        <i className="bi bi-broadcast me-1"></i>LIVE
-                      </span>
-                    )}
-                    <h5 className="card-title">{session.title}</h5>
-                    <p className="card-text text-muted">{session.description}</p>
+          <h1 className="display-3 fw-bold mb-4 animate-fadeInUp" style={{animationDelay: '0.2s'}}>
+            Live <span className="gradient-text">Fitness Sessions</span>
+          </h1>
+          <div className="divider" style={{background: 'white'}}></div>
+          <p className="lead mb-0 animate-fadeInUp" style={{fontSize: '1.3rem', animationDelay: '0.4s'}}>
+            Join expert-led workouts from the comfort of your home
+          </p>
+        </div>
+      </section>
+
+      <div className="section-padding bg-pattern">
+        <div className="container">
+
+          {sessions.length === 0 ? (
+            <div className="alert alert-info text-center p-5 rounded" style={{background: 'white', border: 'none', boxShadow: '0 10px 40px rgba(0,0,0,0.1)'}}>
+              <div style={{fontSize: '4rem', marginBottom: '1rem'}}>📅</div>
+              <h5 className="fw-bold">No upcoming sessions scheduled</h5>
+              <p className="mb-0 text-muted">Check back soon for new sessions!</p>
+            </div>
+          ) : (
+            <div className="row g-4">
+              {sessions.map((session, index) => (
+                <div key={session.id} className="col-md-6 col-lg-4 animate-fadeInUp" style={{animationDelay: `${index * 0.1}s`}}>
+                  <div className="card h-100 card-hover" style={{border: 'none', borderRadius: '20px', boxShadow: '0 4px 20px rgba(0,0,0,0.1)'}}>
+                    <div className="card-body p-4">
+                      {session.is_live && (
+                        <span className="badge mb-3" style={{
+                          background: 'linear-gradient(135deg, #FF6B9D 0%, #FF1744 100%)',
+                          padding: '8px 16px',
+                          borderRadius: '50px',
+                          fontSize: '0.85rem',
+                          fontWeight: '700',
+                          animation: 'pulse 2s infinite'
+                        }}>
+                          🔴 LIVE NOW
+                        </span>
+                      )}
+                      <h5 className="card-title fw-bold mb-3">{session.title}</h5>
+                      <p className="card-text text-muted mb-4">{session.description}</p>
                     
                     <div className="mb-2">
                       <i className="bi bi-calendar-event text-primary me-2"></i>
@@ -101,14 +122,25 @@ export default function SessionsPage() {
                       <span className="badge bg-secondary">{session.session_type}</span>
                     </div>
                     
-                    <button className="btn btn-primary w-100">Join Session</button>
+                      <button className="btn w-100 py-3" style={{
+                        background: 'linear-gradient(135deg, #FF6B9D 0%, #FF1744 100%)',
+                        border: 'none',
+                        borderRadius: '50px',
+                        color: 'white',
+                        fontWeight: '700',
+                        transition: 'all 0.3s ease',
+                        boxShadow: '0 4px 15px rgba(255, 107, 157, 0.4)'
+                      }}>
+                        {session.is_live ? '🎥 Join Live Now' : '📅 Book Session'}
+                      </button>
                   </div>
                 </div>
               </div>
             ))}
-          </div>
-        )}
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

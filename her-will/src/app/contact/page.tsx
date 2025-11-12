@@ -41,35 +41,96 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="py-5">
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-6 mb-4">
-            <h1 className="display-5 fw-bold mb-4">Get in Touch</h1>
-            <p className="lead mb-4">
-              Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
-            </p>
-
-            <div className="mb-4">
-              <h5><i className="bi bi-envelope-fill text-primary me-2"></i>Email</h5>
-              <p className="text-muted">info@herwill.com</p>
-            </div>
-
-            <div className="mb-4">
-              <h5><i className="bi bi-phone-fill text-primary me-2"></i>Phone</h5>
-              <p className="text-muted">+91 98765 43210</p>
-            </div>
-
-            <div className="mb-4">
-              <h5><i className="bi bi-clock-fill text-primary me-2"></i>Business Hours</h5>
-              <p className="text-muted">Monday - Saturday: 9:00 AM - 6:00 PM</p>
-            </div>
+    <>
+      {/* Page Header */}
+      <section className="hero-section" style={{minHeight: '40vh', padding: '80px 0'}}>
+        <div className="container text-center">
+          <div className="animate-fadeInDown">
+            <span className="badge-custom mb-3">💬 Contact Us</span>
           </div>
+          <h1 className="display-3 fw-bold mb-4 animate-fadeInUp" style={{animationDelay: '0.2s'}}>
+            Get in <span className="gradient-text">Touch</span>
+          </h1>
+          <div className="divider" style={{background: 'white'}}></div>
+          <p className="lead mb-0 animate-fadeInUp" style={{fontSize: '1.3rem', animationDelay: '0.4s'}}>
+            We're here to help! Send us a message and we'll respond within 24 hours
+          </p>
+        </div>
+      </section>
 
-          <div className="col-lg-6">
-            <div className="card shadow-sm">
-              <div className="card-body p-4">
-                <h3 className="mb-4">Send us a Message</h3>
+      <div className="section-padding bg-pattern">
+        <div className="container">
+          <div className="row g-5">
+            <div className="col-lg-5 mb-4">
+
+              <div className="p-4 rounded mb-4" style={{background: 'white', boxShadow: '0 4px 20px rgba(0,0,0,0.1)'}}>
+                <div className="d-flex align-items-start mb-4">
+                  <div className="flex-shrink-0">
+                    <div style={{
+                      width: '50px',
+                      height: '50px',
+                      background: 'linear-gradient(135deg, #FF6B9D 0%, #FF1744 100%)',
+                      borderRadius: '15px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '1.5rem'
+                    }}>📧</div>
+                  </div>
+                  <div className="flex-grow-1 ms-3">
+                    <h5 className="fw-bold mb-2">Email</h5>
+                    <p className="text-muted mb-0">info@herwill.com</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-4 rounded mb-4" style={{background: 'white', boxShadow: '0 4px 20px rgba(0,0,0,0.1)'}}>
+                <div className="d-flex align-items-start mb-4">
+                  <div className="flex-shrink-0">
+                    <div style={{
+                      width: '50px',
+                      height: '50px',
+                      background: 'linear-gradient(135deg, #FF6B9D 0%, #FF1744 100%)',
+                      borderRadius: '15px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '1.5rem'
+                    }}>📞</div>
+                  </div>
+                  <div className="flex-grow-1 ms-3">
+                    <h5 className="fw-bold mb-2">Phone</h5>
+                    <p className="text-muted mb-0">+91 98765 43210</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-4 rounded" style={{background: 'white', boxShadow: '0 4px 20px rgba(0,0,0,0.1)'}}>
+                <div className="d-flex align-items-start">
+                  <div className="flex-shrink-0">
+                    <div style={{
+                      width: '50px',
+                      height: '50px',
+                      background: 'linear-gradient(135deg, #FF6B9D 0%, #FF1744 100%)',
+                      borderRadius: '15px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '1.5rem'
+                    }}>⏰</div>
+                  </div>
+                  <div className="flex-grow-1 ms-3">
+                    <h5 className="fw-bold mb-2">Business Hours</h5>
+                    <p className="text-muted mb-0">Monday - Saturday: 9:00 AM - 6:00 PM</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-lg-7">
+              <div className="card" style={{border: 'none', borderRadius: '20px', boxShadow: '0 10px 40px rgba(0,0,0,0.1)'}}>
+                <div className="card-body p-5">
+                  <h3 className="fw-bold mb-4">Send us a Message</h3>
 
                 {status === 'success' && (
                   <div className="alert alert-success" role="alert">
@@ -142,19 +203,30 @@ export default function ContactPage() {
                     ></textarea>
                   </div>
 
-                  <button
-                    type="submit"
-                    className="btn btn-primary w-100"
-                    disabled={status === 'loading'}
-                  >
-                    {status === 'loading' ? 'Sending...' : 'Send Message'}
-                  </button>
+                    <button
+                      type="submit"
+                      className="btn w-100 py-3"
+                      disabled={status === 'loading'}
+                      style={{
+                        background: 'linear-gradient(135deg, #FF6B9D 0%, #FF1744 100%)',
+                        border: 'none',
+                        borderRadius: '50px',
+                        color: 'white',
+                        fontWeight: '700',
+                        fontSize: '1.05rem',
+                        transition: 'all 0.3s ease',
+                        boxShadow: '0 4px 15px rgba(255, 107, 157, 0.4)'
+                      }}
+                    >
+                      {status === 'loading' ? '🔄 Sending...' : '🚀 Send Message'}
+                    </button>
                 </form>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
